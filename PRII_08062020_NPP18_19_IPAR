@@ -1,0 +1,48 @@
+//primjeri dva kratka zadatka sa I parcijalnog ispita iz predmeta PRII u okviru kojih je bilo potrebno predvidjeti rezultat kompajliranja ili izvršenja
+//Zadatak 1.
+class Datum {
+	int* _dan, * _mjesec, * _godina;
+public:
+	Datum(int dan = 1, int mjesec = 1, int godina = 2020){
+		_dan = &dan;
+		_mjesec = &mjesec;
+		_godina = &godina;
+	}
+	friend ostream& operator<<(ostream& COUT, const Datum& obj) {
+		COUT << *obj._dan << "." << *obj._mjesec << "." 
+     << *obj._godina;
+		return COUT;
+	}
+};
+int main() {
+	Datum danas, sutra(9,6,2020);
+	cout << danas <<" " << sutra << endl;
+	return 0;
+}
+//Zadatak 2.
+
+#include <iostream>
+using namespace std;
+
+template<class T>
+class Vrijednost {	
+	T _vrijednost;
+public:
+	Vrijednost(T vrijednost){
+		_vrijednost = vrijednost;
+	}
+	Vrijednost & operator++() {
+		_vrijednost++;
+		return *this;
+	}
+	friend ostream& operator<< (ostream& COUT, 
+const Vrijednost& obj) {
+		COUT << obj._vrijednost << endl;
+		return COUT;
+	}
+};
+int main() {
+	Vrijednost<int> a = 10;	
+	cout << a++ << endl;
+	return 0;
+}
